@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Pendaftaran Nebularium</title>
+  <meta name="description" content="Form pendaftaran Nebularium Production seperti Google Form" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#f6f7fb; --card:#ffffff; --ink:#0f172a; --muted:#64748b; --brand:#6d28d9; --brand-2:#8b5cf6; --ring:#c4b5fd; --ok:#16a34a; --err:#dc2626;
+    }
+    *{box-sizing:border-box}
+    html,body{margin:0;padding:0;font-family:Inter,system-ui,Segoe UI,Roboto,Apple Color Emoji,Noto Color Emoji,EmojiOne Mozilla,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+    .wrap{max-width:900px;margin:32px auto;padding:0 16px}
+    .card{background:var(--card);border-radius:18px;box-shadow:0 10px 30px rgba(2,6,23,.06);overflow:hidden;border:1px solid #eef2ff}
+    .head{padding:28px 28px 18px;background:linear-gradient(180deg,rgba(139,92,246,.18),transparent)}
+    .title{font-weight:800;font-size:28px;letter-spacing:.2px}
+    .subtitle{color:var(--muted);margin-top:6px}
+    form{padding:8px 24px 28px}
+    .field{padding:18px 4px;border-bottom:1px solid #f1f5f9}
+    .field:last-child{border-bottom:none}
+    label{display:block;font-size:14px;font-weight:700;margin-bottom:8px}
+    .req::after{content:" *";color:var(--brand)}
+    input[type="text"],input[type="email"],input[type="number"],input[type="url"],select,textarea{width:100%;padding:12px 14px;border:1.5px solid #e2e8f0;border-radius:12px;outline:none;font-size:14px;background:#fff;transition:.2s}
+    textarea{min-height:110px;resize:vertical}
+    input:focus,select:focus,textarea:focus{border-color:var(--ring);box-shadow:0 0 0 4px rgba(196,181,253,.25)}
+    .hint{font-size:12px;color:var(--muted);margin-top:6px}
+    .row{display:grid;grid-template-columns:1fr;gap:18px}
+    @media(min-width:720px){.row{grid-template-columns:1fr 1fr}}
+    .checkgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:10px}
+    .chip{display:flex;align-items:center;gap:8px;padding:10px 12px;border:1px solid #e5e7eb;border-radius:12px}
+    .actions{display:flex;align-items:center;gap:12px;margin-top:18px}
+    .btn{appearance:none;border:none;border-radius:12px;padding:12px 18px;font-weight:700;cursor:pointer}
+    .btn-primary{background:linear-gradient(135deg,var(--brand),var(--brand-2));color:#fff;box-shadow:0 10px 20px rgba(109,40,217,.25)}
+    .btn-ghost{background:transparent;border:1.5px solid #e5e7eb;color:var(--ink)}
+    .reqnote{font-size:12px;color:var(--muted);margin:16px 0 0}
+    .status{margin-top:14px;font-size:14px}
+    .ok{color:var(--ok)}
+    .err{color:var(--err)}
+    .footer-note{font-size:12px;color:var(--muted);padding:16px 24px 26px}
+    .pill{display:inline-block;padding:4px 10px;border-radius:999px;background:#f1f5ff;color:#4338ca;font-weight:700;font-size:12px;letter-spacing:.3px}
+    .thankyou{padding:40px;text-align:center}
+    .thankyou h2{font-size:24px;font-weight:800;color:var(--ok)}
+    .thankyou p{margin-top:12px;font-size:16px;color:var(--muted)}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <div class="card" id="formCard">
+      <div class="head">
+        <div class="pill">Nebularium Production</div>
+        <div class="title">Form Pendaftaran Anggota</div>
+        <div class="subtitle">Isi data kamu dengan jujur ya. Tanda bintang (*) wajib diisi.</div>
+      </div>
+      <form id="nebularium-form">
+        <div class="field">
+          <label class="req" for="nama">Nama Lengkap</label>
+          <input id="nama" name="nama" type="text" placeholder="Contoh: Arya Pratama" required />
+        </div>
+
+        <div class="field row">
+          <div>
+            <label class="req" for="umur">Umur</label>
+            <input id="umur" name="umur" type="number" min="7" max="80" placeholder="Contoh: 16" required />
+          </div>
+          <div>
+            <label class="req" for="kelas">Kelas / Tingkat</label>
+            <input id="kelas" name="kelas" type="text" placeholder="Contoh: 10 SMA / Semester 1 / Pekerja" required />
+          </div>
+        </div>
+
+        <div class="field row">
+          <div>
+            <label class="req" for="role">Role yang diinginkan</label>
+            <select id="role" name="role" required>
+              <option value="" disabled selected>Pilih role</option>
+              <option>Builder</option>
+              <option>Animator</option>
+              <option>Script Writer</option>
+              <option>Voice Actor</option>
+              <option>Editor</option>
+              <option>Composer / Music</option>
+              <option>Server Staff</option>
+              <option>Lainnya</option>
+            </select>
+          </div>
+          <div>
+            <label class="req" for="platform">Platform Minecraft</label>
+            <select id="platform" name="platform" required>
+              <option value="" disabled selected>Pilih platform</option>
+              <option>Java Edition</option>
+              <option>Bedrock / PE</option>
+              <option>Keduanya</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="minat" class="req">Bidang Minat</label>
+          <div class="checkgrid" id="minat">
+            <label class="chip"><input type="checkbox" name="minat" value="Animasi"> Animasi</label>
+            <label class="chip"><input type="checkbox" name="minat" value="Build"> Build</label>
+            <label class="chip"><input type="checkbox" name="minat" value="Redstone/Command"> Redstone / Command</label>
+            <label class="chip"><input type="checkbox" name="minat" value="Music/Sound"> Music / Sound</label>
+            <label class="chip"><input type="checkbox" name="minat" value="Editing Video"> Editing Video</label>
+            <label class="chip"><input type="checkbox" name="minat" value="Menulis Naskah"> Menulis Naskah</label>
+            <label class="chip"><input type="checkbox" name="minat" value="Desain"> Desain</label>
+            <label class="chip"><input type="checkbox" name="minat" value="Sosial Media"> Sosial Media</label>
+          </div>
+          <div class="hint">Centang beberapa jika relevan.</div>
+        </div>
+
+        <div class="field row">
+          <div>
+            <label class="req" for="username">Username Minecraft</label>
+            <input id="username" name="username" type="text" placeholder="Contoh: NebulaZ" required />
+          </div>
+          <div>
+            <label class="req" for="gmail">Email (Gmail)</label>
+            <input id="gmail" name="gmail" type="email" inputmode="email" placeholder="nama@gmail.com" pattern="^[^@\s]+@gmail\.com$" required />
+            <div class="hint">Gunakan alamat Gmail aktif.</div>
+          </div>
+        </div>
+
+        <div class="field row">
+          <div>
+            <label for="kontak">Kontak (WhatsApp / Discord)</label>
+            <input id="kontak" name="kontak" type="text" placeholder="WA: 08xxxx atau Discord: user#0001" />
+          </div>
+          <div>
+            <label for="portfolio">Link Portofolio (opsional)</label>
+            <input id="portfolio" name="portfolio" type="url" placeholder="https://..." />
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="req" for="alasan">Alasan ingin bergabung</label>
+          <textarea id="alasan" name="alasan" placeholder="Ceritakan motivasi, pengalaman, dan apa yang ingin kamu pelajari." required></textarea>
+        </div>
+
+        <div class="field">
+          <label class="req">Ketersediaan waktu per minggu</label>
+          <div class="checkgrid">
+            <label class="chip"><input type="radio" name="waktu" value="2–4 jam" required> 2–4 jam</label>
+            <label class="chip"><input type="radio" name="waktu" value="5–8 jam" required> 5–8 jam</label>
+            <label class="chip"><input type="radio" name="waktu" value="> 9 jam" required> ≥ 9 jam</label>
+          </div>
+        </div>
+
+        <div class="field">
+          <label class="req">Persetujuan</label>
+          <label class="chip" style="user-select:none">
+            <input type="checkbox" id="agree" required>
+            Saya menyatakan data di atas benar dan bersedia mengikuti peraturan komunitas Nebularium.
+          </label>
+          <div class="reqnote">* Wajib diisi</div>
+        </div>
+
+        <input type="hidden" name="form_name" value="Pendaftaran Nebularium" />
+        <input type="hidden" name="to_email" value="Aryafltrust@gmail.com" />
+
+        <div class="actions">
+          <button class="btn btn-primary" id="submitBtn" type="submit">Kirim Pendaftaran</button>
+          <button class="btn btn-ghost" type="reset">Reset</button>
+        </div>
+        <div class="status" id="status"></div>
+      </form>
+      <div class="footer-note">
+        Tips: jika ingin menambah kolom lain (contoh: Kota, Tanggal Lahir), duplikasikan blok <code>.field</code> dan ubah <em>name</em> serta <em>id</em> sesuai kebutuhan.
+      </div>
+    </div>
+
+    <div class="card" id="thankyouCard" style="display:none">
+      <div class="thankyou">
+        <h2>✅ Terima kasih sudah mendaftar!</h2>
+        <p>Pendaftaranmu berhasil terkirim. Kami akan memproses dalam waktu 5–7 jam ke depan.</p>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.emailjs.com/dist/email.min.js"></script>
+
+
+  <script>
+    const MODE_SUBMIT = 'emailjs';
+    const EMAILJS_SERVICE_ID = 'service_osneafu';
+    const EMAILJS_TEMPLATE_ID = 'template_ihck73s';
+    const EMAILJS_PUBLIC_KEY = 'piZ8sdKdn-z2dgRgR';
+    const GOOGLE_SCRIPT_URL = 'PASTE_YOUR_SCRIPT_WEB_APP_URL_HERE';
+
+    const form = document.getElementById('nebularium-form');
+    const statusEl = document.getElementById('status');
+    const submitBtn = document.getElementById('submitBtn');
+    const formCard = document.getElementById('formCard');
+    const thankyouCard = document.getElementById('thankyouCard');
+
+    function setStatus(msg, type){
+      statusEl.textContent = msg;
+      statusEl.className = 'status ' + (type || '');
+    }
+
+    function getMinatValues(){
+      return Array.from(document.querySelectorAll('input[name="minat"]:checked')).map(el=>el.value).join(', ');
+    }
+
+    async function submitWithEmailJS(){
+      if(!window.emailjs){
+        throw new Error('EmailJS belum diaktifkan. Buka komentar <script src=...email.min.js> di atas.');
+      }
+      emailjs.init(EMAILJS_PUBLIC_KEY);
+      await emailjs.sendForm(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, form);
+    }
+
+    async function submitToAppsScript(){
+      if(!GOOGLE_SCRIPT_URL || GOOGLE_SCRIPT_URL.startsWith('PASTE_')){
+        throw new Error('GOOGLE_SCRIPT_URL belum diisi.');
+      }
+      const fd = new FormData(form);
+      fd.set('minat', getMinatValues());
+      const res = await fetch(GOOGLE_SCRIPT_URL, { method:'POST', body: fd });
+      if(!res.ok) throw new Error('Gagal kirim ke Google Apps Script. Status '+res.status);
+      return res.text();
+    }
+
+    form.addEventListener('submit', async (e)=>{
+      e.preventDefault();
+      setStatus('Mengirim data...', '');
+      submitBtn.disabled = true;
+      try{
+        if(!form.reportValidity()) return;
+        if(MODE_SUBMIT==='apps-script'){
+          await submitToAppsScript();
+        } else {
+          await submitWithEmailJS();
+        }
+        form.reset();
+        formCard.style.display = 'none';
+        thankyouCard.style.display = 'block';
+      } catch(err){
+        console.error(err);
+        setStatus('❌ Gagal mengirim: ' + err.message, 'err');
+      } finally {
+        submitBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
